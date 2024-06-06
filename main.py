@@ -7,7 +7,6 @@ import plotly.graph_objects as go
 from itertools import islice
 from datetime import datetime
 from plotly.subplots import make_subplots
-import streamlit_shadcn_ui as ui
 
 st.set_page_config(page_title="Stocks Dashboard", page_icon="📈", layout="wide")
 st.html("styles.html")
@@ -188,18 +187,17 @@ def plot_candlestick(history_df):
 @st.experimental_fragment
 def display_symbol_history(ticker_df, history_df):
     left_widget, right_widget, _ = st.columns([1, 1, 1.5])
-    with left_widget:
-        selected_ticker = ui.select(
-            "📰 Currently Showing",
-            list(history_dfs.keys()),
-        )
 
-    with right_widget:
-        selected_period = ui.select(
-            "⌛ Period",
-            ("Week", "Month", "Trimester", "Year"),
-            2,
-        )
+    selected_ticker = left_widget.selectbox(
+        "📰 Currently Showing",
+        list(history_dfs.keys()),
+    )
+
+    selected_period = right_widget.selectbox(
+        "⌛ Period",
+        ("Week", "Month", "Trimester", "Year"),
+        2,
+    )
 
     history_df = history_dfs[selected_ticker]
 
