@@ -1,0 +1,5 @@
+.idea
+venv
+.streamlit/stocks.json
+.cache
+.venv-source-google-sheets
