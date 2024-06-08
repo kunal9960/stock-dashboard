@@ -63,6 +63,7 @@
 
     /* Adapted from https://startbootstrap.com/theme/sb-admin-2 */
     div[data-testid="stMetric"] {
+        font-family: "Open Sans", sans-serif;
         background-color: #FFFFFF;
         border: 1.2px solid #CCCCCC;
         padding: 1em 2em;
@@ -71,28 +72,35 @@
     }
 
     label[data-testid="stMetricLabel"] p {
-        font-size: 1em;
+        font-family: "Open Sans", sans-serif;
+        font-size: 0.9em;
     }
 
     div[data-testid="stMetricValue"] {
         font-size: 1.2em;
         font-weight: 600;
+        font-family: "Open Sans", sans-serif;
         color: black;
     }
 
     div[data-testid="stVerticalBlock"]:has(> div > .stHtml > .low_indicator) {
         & div[data-testid="stMetric"] {
-            border-left: 0.5rem solid red;
+            font-family: "Open Sans", sans-serif;
+            border-left: 0.5rem solid #FF5B61;
         }
     }
 
     div[data-testid="stVerticalBlock"]:has(> div > .stHtml > .high_indicator) {
         & div[data-testid="stMetric"] {
-            border-left: 0.5rem solid green;
+            font-family: "Open Sans", sans-serif;
+            border-left: 0.5rem solid #1AB465;
         }
     }
 
     div[data-testid="stVerticalBlock"]:has(> div > .stHtml > .bottom_indicator) {
+        & div[data-testid="stMetric"] {
+        font-family: "Open Sans", sans-serif;
+        border-left: 0.5rem solid #C1CDD7;
         margin-top: 0.5em;
     }
 

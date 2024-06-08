@@ -10,7 +10,7 @@ from plotly.subplots import make_subplots
 
 
 icon = "favicon.png"
-st.set_page_config(page_title="Stocks Dashboard", page_icon=icon, layout="wide")  # Page config
+st.set_page_config(page_title="Stock Dashboard", page_icon=icon, layout="wide")  # Page config
 st.html("styles.html")
 pio.templates.default = "plotly_white"
 
@@ -309,54 +309,111 @@ def display_overview(ticker_df):
     def apply_odd_row_class(row):
         return ["background-color: #f8f8f8" if row.name % 2 != 0 else "" for _ in row]
 
-    with st.expander("📈 Stocks Preview"):
-        styled_df = (
-            ticker_df.style.format(
-                {
-                    "last_price": format_currency,
-                    "change_pct": format_percentage,
-                }
-            )
-            .apply(apply_odd_row_class, axis=1)
-            .map(format_change, subset=["change_pct"])
-        )
+    col1, col2 = st.columns([1, 2])
+    with col1:
+        st.write("<h2><b>💼 <u>Stock Preview</b></h2>", unsafe_allow_html=True)
+        st.write("<i>This data is extracted from :blue[🏦 Google Finance] using the functions of :violet[📝 Airbyte] to my :green[🐍 Python] script.", unsafe_allow_html=True)
 
-        st.dataframe(
-            styled_df,
-            column_order=[column for column in list(ticker_df.columns) if column not in [
-                "_airbyte_raw_id",
-                "_airbyte_extracted_at",
-                "_airbyte_meta",
-            ]
-                          ],
-            column_config={
-                "open": st.column_config.AreaChartColumn(
-                    "Last 12 Months",
-                    width="large",
-                    help="Open Price for the last 12 Months",
-                ),
-            },
-            hide_index=True,
-            height=250,
-            use_container_width=True,
+    with col2:
+        st.image("stock-body.gif", width=130)
+    styled_df = (
+        ticker_df.style.format(
+            {
+                "last_price": format_currency,
+                "change_pct": format_percentage,
+            }
         )
+        .apply(apply_odd_row_class, axis=1)
+        .map(format_change, subset=["change_pct"])
+    )
+
+    st.dataframe(
+        styled_df,
+        column_order=[column for column in list(ticker_df.columns) if column not in [
+            "_airbyte_raw_id",
+            "_airbyte_extracted_at",
+            "_airbyte_meta",
+        ]
+                      ],
+        column_config={
+            "open": st.column_config.AreaChartColumn(
+                "Last 12 Months",
+                width="large",
+                help="Open Price for the last 12 Months",
+            ),
+        },
+        hide_index=True,
+        height=250,
+        use_container_width=True,
+    )
 
 
 col1, col2 = st.columns([1, 2])
 with col1:
-    st.write("<h2><b>📈 <u>Stocks Dashboard</b></h2>", unsafe_allow_html=True)
-    st.write("<i>A stock dashboard that provides real-time data, performance charts, and key financial metrics for understanding the behaviour of companies.</i>", unsafe_allow_html=True)
+    st.write("<h2><b>📈 <u>Stock Dashboard</b></h2>", unsafe_allow_html=True)
+    st.write("<i>A stock dashboard that provides real-time data, performance charts, and key financial metrics for understanding the financial behaviour of companies.</i>", unsafe_allow_html=True)
 with col2:
-    st.image("stocks-header.gif", width=155)
+    st.image("stock-header.gif", width=155)
 
 gsheets_connection = connect_to_gsheets()
 ticker_df, history_dfs = download_data(gsheets_connection)
-
 ticker_df, history_dfs = transform_data(ticker_df, history_dfs)
-
 display_watchlist(ticker_df)
 
 st.divider()
-
 display_symbol_history(ticker_df, history_dfs)
+
+st.divider()
 display_overview(ticker_df)
+
+st.markdown(
+    "[![GitHub Badge](https://img.shields.io/badge/GitHub-181717?logo=github&logoColor=fff&style=flat)](https://github.com/kunal9960/stocks-dashboard)&nbsp;&nbsp;" +
+    "[![Streamlit Badge](https://img.shields.io/badge/Streamlit-FF4B4B?logo=streamlit&logoColor=fff&style=flat)](https://stocks-dashboard-kunaal.streamlit.app/)")
+
+
+ft = """
+<style>
+a:link , a:visited{
+color: #BFBFBF;  /* theme's text color hex code at 75 percent brightness*/
+background-color: transparent;
+text-decoration: none;
+}
+
+a:hover,  a:active {
+color: #0283C3; /* theme's primary color*/
+background-color: transparent;
+text-decoration: underline;
+}
+
+#page-container {
+  position: relative;
+  min-height: 10vh;
+}
+
+footer{
+    visibility:hidden;
+}
+
+.footer {
+position: relative;
+left: 0;
+top:150px;
+bottom: 0;
+width: 100%;
+background-color: transparent;
+color: #808080;
+text-align: left;
+}
+</style>
+
+<div id="page-container">
+
+<div class="footer">
+<p style='font-size: 1em;'>Made with <a style='display: inline; text-align: left;' href="https://streamlit.io/" target="_blank">Streamlit</a><br 'style= top:3px;'>
+with <img src="https://em-content.zobj.net/source/skype/289/red-heart_2764-fe0f.png" alt="heart" height= "10"/><a style='display: inline; text-align: left;' href="https://github.com/kunal9960" target="_blank"> by Kunal</a>
+<a style='display: inline; text-align: left;'>© Copyright 2024</a></p>
+</div>
+
+</div>
+"""
+st.write(ft, unsafe_allow_html=True)
