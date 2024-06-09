@@ -55,8 +55,6 @@ Install using  ```requirements.txt```
 
 ## Usage
 
-### Main Features:
-
 1. **Watchlist:**
 Displays a list of stocks with current price, percentage change, and a sparkline showing recent price trends.
 
