@@ -73,8 +73,3 @@ Contributions are welcome! If you have any ideas for improvements or new feature
 ## Acknowledgments
 
 Feel free to contact me if you need help with any of the projects :)
-
-
-## License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
