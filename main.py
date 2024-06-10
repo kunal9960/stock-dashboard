@@ -368,7 +368,7 @@ display_overview(ticker_df)
 
 st.markdown(
     "[![GitHub Badge](https://img.shields.io/badge/GitHub-181717?logo=github&logoColor=fff&style=flat)](https://github.com/kunal9960/stocks-dashboard)&nbsp;&nbsp;" +
-    "[![Streamlit Badge](https://img.shields.io/badge/Streamlit-FF4B4B?logo=streamlit&logoColor=fff&style=flat)](https://stocks-dashboard-kunaal.streamlit.app/)")
+    "[![Streamlit Badge](https://img.shields.io/badge/Streamlit-FF4B4B?logo=streamlit&logoColor=fff&style=flat)](https://stock-dashboard-kunal.streamlit.app/)")
 
 
 ft = """
