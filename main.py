@@ -177,7 +177,7 @@ def display_symbol_history(ticker_df, history_df):
     selected_period = right_widget.selectbox(
         "⏱️ Period",
         ("Week", "Month", "Trimester", "Year"),
-        1,
+        2,
     )
 
     history_df = history_dfs[selected_ticker]
