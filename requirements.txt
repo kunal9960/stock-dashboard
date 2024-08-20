@@ -81,7 +81,6 @@ six==1.16.0
 snowflake-connector-python==3.12.0
 snowflake-sqlalchemy==1.6.1
 sortedcontainers==2.4.0
-source-google-sheets==1.0.0
 streamlit==1.37.1
 strictyaml==1.7.3
 time-machine==2.15.0
