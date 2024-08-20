@@ -164,7 +164,7 @@ def display_watchlist(ticker_df):
                     )
 
 
-@st.experimental_fragment
+@st.fragment
 def display_symbol_history(ticker_df, history_df):
     st.write("<h2><b>🚀 <u>Period Performance Analysis</b></h2>", unsafe_allow_html=True)
     left_widget, right_widget, _ = st.columns([1, 1, 1.5])
