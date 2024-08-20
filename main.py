@@ -32,7 +32,7 @@ def _read_service_account_secret():  # Most important, to load json -> toml file
 def connect_to_gsheets():  # Establishing airbyte connection with service account and excel
     s_acc = _read_service_account_secret()
     gsheets_connection = ab.get_source(
-        "google-sheets",
+        "source-google-sheets",
         config={
             "spreadsheet_id": st.secrets["stocks"],
             "credentials": {
