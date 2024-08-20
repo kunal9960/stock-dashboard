@@ -88,7 +88,6 @@ sortedcontainers==2.4.0
 source-google-sheets==1.0.0
 streamlit==1.37.1
 strictyaml==1.7.3
-tenacity==9.0.0
 time-machine==2.15.0
 toml==0.10.2
 tomlkit==0.13.2
