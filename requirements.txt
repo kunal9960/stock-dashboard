@@ -109,5 +109,4 @@ url-normalize==1.4.3
 urllib3==2.2.2
 uuid7==0.1.0
 watchdog==4.0.2
-wcmatch==9.0
 wrapt==1.16.0
