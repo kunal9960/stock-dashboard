@@ -1,5 +1,4 @@
 airbyte==0.17.0
-airbyte-cdk==4.5.2
 altair==5.4.0
 annotated-types==0.7.0
 asn1crypto==1.5.1
