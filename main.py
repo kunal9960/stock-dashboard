@@ -351,7 +351,7 @@ def display_overview(ticker_df):
 col1, col2 = st.columns([1, 2])
 with col1:
     st.write("<h2><b>📈 <u>Stock Dashboard</b></h2>", unsafe_allow_html=True)
-    st.write("<i>A stock dashboard that provides real-time data, performance charts, and key financial metrics for understanding the financial behaviour of companies.</i>", unsafe_allow_html=True)
+    st.write("<i>This is a stock dashboard that provides real-time data, performance charts, and key financial metrics for understanding the financial behaviour of companies.</i>", unsafe_allow_html=True)
 with col2:
     st.image("stock-header.gif", width=155)
 
