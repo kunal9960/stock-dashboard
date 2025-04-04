@@ -350,7 +350,7 @@ def display_overview(ticker_df):
 col1, col2 = st.columns([1, 2])
 with col1:
     st.write("<h2><b>📈 <u>Stock Dashboard</b></h2>", unsafe_allow_html=True)
-    st.write("<i>This is a stock dashboard that provides real-time data, performance charts, and key financial metrics for understanding the financial behaviour of companies.</i>", unsafe_allow_html=True)
+    st.write("<i>A stock dashboard that provides real-time data, performance charts, and key financial metrics for understanding the financial behaviour of companies.</i>", unsafe_allow_html=True)
 with col2:
     st.image("stock-header.gif", width=155)
 
@@ -410,7 +410,7 @@ text-align: left;
 <div class="footer">
 <p style='font-size: 1em;'>Made with <a style='display: inline; text-align: left;' href="https://streamlit.io/" target="_blank">Streamlit</a><br 'style= top:3px;'>
 with <img src="https://em-content.zobj.net/source/skype/289/red-heart_2764-fe0f.png" alt="heart" height= "10"/><a style='display: inline; text-align: left;' href="https://github.com/kunal9960" target="_blank"> by Kunal</a>
-<a style='display: inline; text-align: left;'>© Copyright 2024</a></p>
+<a style='display: inline; text-align: left;'>© Copyright 2025</a></p>
 </div>
 
 </div>
