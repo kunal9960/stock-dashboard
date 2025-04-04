@@ -5,10 +5,11 @@
 ![uptime](https://img.shields.io/badge/uptime-100%25-brightgreen)
 [![Made With Love](https://img.shields.io/badge/Made%20With-Love-orange.svg)](https://github.com/kunal9960)
 
-This project creates a comprehensive Stock Dashboard using Python and Streamlit which provides real-time data, performance charts, and key financial metrics to help users understand the behavior of various stocks.
+This project creates a comprehensive **Stock Dashboard** using **Python and Streamlit** which provides real-time data, performance charts, and key financial metrics to help users understand the behavior of various stocks.
 
 <img src="https://github.com/kunal9960/stocks-dashboard/blob/master/Dashboard.png" width="800">
 
+---
 
 ## Features
 
@@ -17,6 +18,7 @@ This project creates a comprehensive Stock Dashboard using Python and Streamlit 
 - Period performance analysis with candlestick and volume charts.
 - Stock performance comparison.
 
+---
 
 ## Requirements
 
@@ -27,6 +29,7 @@ Install using  ```requirements.txt```
 - Pandas
 - Airbyte
 
+---
 
 ## Setup
 
@@ -52,6 +55,7 @@ Install using  ```requirements.txt```
    streamlit run main.py
    ```
 
+---
 
 ## Usage
 
@@ -64,11 +68,13 @@ Shows detailed performance analysis for selected stocks over different periods (
 3. **Stock Performance Comparison:**
 Line chart comparing the performance of different stocks over a specified period.
 
+---
 
 ## Contributing
 
 Contributions are welcome! If you have any ideas for improvements or new features, feel free to fork the repository and submit a pull request. You can also open an issue to report bugs or suggest enhancements.
 
+---
 
 ## Acknowledgments
 
