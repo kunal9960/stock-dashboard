@@ -33,7 +33,7 @@ def connect_to_gsheets():  # Establishing airbyte connection with service accoun
     gsheets_connection = ab.get_source(
         "source-google-sheets",
         config={
-            "spreadsheet_id": "https://docs.google.com/spreadsheets/d/1Jewxo5ERFSPRDjkpNfqsPmiAxOZM81FKS1sX6Pi5kdk/edit?usp=sharing",
+            "spreadsheet_id": "1Jewxo5ERFSPRDjkpNfqsPmiAxOZM81FKS1sX6Pi5kdk/",
             "credentials": {
                 "auth_type": "Service",
                 "service_account_info": json.dumps(s_acc),
