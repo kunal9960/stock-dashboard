@@ -14,7 +14,6 @@ st.set_page_config(page_title="Stock Dashboard", page_icon=icon, layout="wide") 
 st.html("styles.html")
 pio.templates.default = "plotly_white"
 
-
 def batched(iterable, n_cols):  # This is for rows and columns
     if n_cols < 1:
         raise ValueError("n must be at least one")
