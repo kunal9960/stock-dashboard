@@ -7,6 +7,8 @@ import plotly.graph_objects as go
 from itertools import islice
 from datetime import datetime
 from plotly.subplots import make_subplots
+import gspread
+from oauth2client.service_account import ServiceAccountCredentials
 
 
 icon = "favicon.png"
@@ -28,34 +30,33 @@ def _read_service_account_secret():  # Most important, to load json -> toml file
 
 
 @st.cache_resource
-def connect_to_gsheets():  # Establishing airbyte connection with service account and excel
+def connect_to_gsheets():
     s_acc = _read_service_account_secret()
-    gsheets_connection = ab.get_source(
-        "source-google-sheets",
-        config={
-            "spreadsheet_id": "1fD_vCTgPPWJp-aDDIT00-6Sxq5x6dBOYmRA9D3vfk1A",
-            "credentials": {
-                "auth_type": "Service",
-                "service_account_info": json.dumps(s_acc),
-            },
-        },
-    )
-    gsheets_connection.select_all_streams()
-    return gsheets_connection
+    scope = ['https://spreadsheets.google.com/feeds', 'https://www.googleapis.com/auth/drive']
+    creds = ServiceAccountCredentials.from_json_keyfile_dict(s_acc, scope)
+    client = gspread.authorize(creds)
+    
+    spreadsheet = client.open_by_key("1fD_vCTgPPWJp-aDDIT00-6Sxq5x6dBOYmRA9D3vfk1A")
+    
+    return spreadsheet
 
 
 @st.cache_data
-def download_data(_gsheets_connection):  # Downloading data from airbyte
-    airbyte_streams = _gsheets_connection.read()
-
-    ticker_df = airbyte_streams["ticker"].to_pandas()
+def download_data(spreadsheet):
+    ticker_sheet = spreadsheet.worksheet("ticker")
+    tickers = pd.DataFrame(ticker_sheet.get_all_records())
 
     history_dfs = {}
-    for ticker in list(ticker_df["ticker"]):
-        d = airbyte_streams[ticker].to_pandas()
-        history_dfs[ticker] = d
+    for ticker in tickers["ticker"]:
+        try:
+            sheet = spreadsheet.worksheet(ticker)
+            df = pd.DataFrame(sheet.get_all_records())
+            history_dfs[ticker] = df
+        except:
+            st.warning(f"Worksheet for ticker '{ticker}' not found.")
+    
+    return tickers, history_dfs
 
-    return ticker_df, history_dfs
 
 
 @st.cache_data
